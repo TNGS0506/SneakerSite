@@ -25,7 +25,7 @@ const FirstPage = () => {
         <div
           className={`w-96 h-96 flex flex-col`}
         >
-          <Model />
+          {/* <Model /> */}
         </div>
       </div>
 
