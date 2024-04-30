@@ -7,7 +7,7 @@ const FirstPage = () => {
 
 
   return (
-    <section className="relative w-full h-screen mx-auto bg-[#000000]">
+    <section className="relative w-full h-screen mx-auto bg-[#000000] mb-12 ">
       <div
         className={`${styles.paddingX} absolute inset-0 top-[40px] max-w-10xl mx-auto flex flex-col h-auto  gap-5`}
       >

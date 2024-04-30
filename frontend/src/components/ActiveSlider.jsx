@@ -8,7 +8,7 @@ import { ServiceData } from "../constants";
 
 const ActiveSlider = () => {
     return (
-      <div className="flex items-center justify-center flex-col auto bg-black">
+      <div className="flex items-center justify-center flex-col auto bg-black pb-5">
         <Swiper
           loop={true}
           autoplay={{

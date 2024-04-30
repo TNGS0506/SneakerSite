@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 import os
 
 class Category(models.Model):
@@ -11,7 +12,7 @@ class Category(models.Model):
 
 class Shoe(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="brand_images/", null=True, blank=True)
+    image = models.ImageField(_("Image"),upload_to="shoes/", null=True, blank=True)
     price = models.IntegerField(max_length=20)  
     description = models.CharField(max_length=200, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
