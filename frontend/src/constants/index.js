@@ -52,3 +52,50 @@ export const ServiceData = [
     backgroundImage: Photo4,
   },
 ]
+
+
+import Logo1 from '../assets/images/jordan.png'
+import Logo2 from '../assets/images/adidas.jpg'
+import Logo3 from '../assets/images/asics.png'
+import Logo4 from '../assets/images/new-balance.jpg'
+import Logo5 from '../assets/images/under-armour.png'
+import Logo6 from '../assets/images/nike-logo-real.jpg'
+
+export const LogoImages = [
+  {
+    icon: RxCrop,
+    title: "Development",
+    content: "a;skldfjasdfkjasl;kdfjas;fjasdfj;",
+    backgroundImage: Logo1,
+  },
+  {
+    icon: RxPencil2,
+    title: "Development",
+    content: "a;skldfjasdfkjasl;kdfjas;fjasdfj;",
+    backgroundImage: Logo2,
+  },
+  {
+    icon: RxReader,
+    title: "Development",
+    content: "a;skldfjasdfkjasl;kdfjas;fjasdfj;",
+    backgroundImage: Logo3,
+  },
+  {
+    icon: RxAccessibility,
+    title: "Development",
+    content: "a;skldfjasdfkjasl;kdfjas;fjasdfj;",
+    backgroundImage: Logo4,
+  },
+  {
+    icon: RxAccessibility,
+    title: "Development",
+    content: "a;skldfjasdfkjasl;kdfjas;fjasdfj;",
+    backgroundImage: Logo5,
+  },
+  {
+    icon: RxAccessibility,
+    title: "Development",
+    content: "a;skldfjasdfkjasl;kdfjas;fjasdfj;",
+    backgroundImage: Logo6,
+  },
+]

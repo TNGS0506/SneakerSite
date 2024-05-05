@@ -5,6 +5,10 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FirstPage from './pages/FirstPage'
 import HighlightedShoes from "./pages/highlightedShoes";
+import Brands from "./components/Brands";
+
+
+
 
 function App() {
   return (
@@ -14,6 +18,7 @@ function App() {
       <Navbar/>
       <FirstPage/>
       <HighlightedShoes/>
+      <Brands/>
       </div>
     </div>
       
