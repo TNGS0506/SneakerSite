@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FirstPage from './pages/FirstPage'
 import HighlightedShoes from "./pages/highlightedShoes";
 import Brands from "./components/Brands";
-
+import FourthSection from "./pages/FourthSection";
 
 
 
@@ -19,6 +19,7 @@ function App() {
       <FirstPage/>
       <HighlightedShoes/>
       <Brands/>
+      <FourthSection/>
       </div>
     </div>
       

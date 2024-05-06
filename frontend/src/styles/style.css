@@ -1,0 +1,55 @@
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop-layout {
+    display: none; /* Hide desktop layout by default */
+}
+
+.mobile-layout {
+    display: block; /* Show mobile layout by default */
+}
+
+/* Media query for desktop layout */
+@media (min-width: 768px) {
+    .desktop-layout {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-layout {
+        display: none; /* Hide mobile layout on desktop */
+    }
+}
+
+/* Styles for desktop layout */
+.photo,
+.text {
+    height: 100%; /* Fill the container height */
+    background-size: cover;
+    background-position: center;
+}
+
+.quote {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 16px;
+}
+
+/* Styles for mobile layout */
+.photo-mobile {
+    background-size: cover;
+    background-position: center;
+    height: 200px; /* Set the height of the photo on mobile */
+}
+
+.text-mobile {
+    padding-top: 20px; /* Add space between photo and text on mobile */
+}

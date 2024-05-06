@@ -26,12 +26,12 @@ const HighlightedShoes = () => {
   };
 
   return (
-    <div className="h-screen w-full pt-24 lg:pt-64 pl-2 lg:pl-0">
+    <div className="h-auto w-full pt-24 lg:pt-64 pl-2 lg:pl-0">
       <div className="flex justify-center mb-8">
         <h1 className="text-4xl font-bold text-gray-800">Онцлох Бараанууд</h1>
       </div>
 
-      <div className="flex items-center justify-center flex-col auto pb-5 pt-12">
+      <div className="flex items-center justify-center flex-col lg:pb-5 pt-12">
         <Swiper
           loop={true}
           autoplay={{
@@ -40,7 +40,7 @@ const HighlightedShoes = () => {
           }}
           breakpoints={{
             340: {
-              slidesPerView: 2, // Adjusted to show one slide on small screens
+              slidesPerView:1.9, // Adjusted to show one slide on small screens
               spaceBetween: 50, // Adjust the space between slides for mobile
             },
             700: {
@@ -53,7 +53,10 @@ const HighlightedShoes = () => {
             clickable: true,
           }}
           modules={{ FreeMode, Pagination, Autoplay }}
-          className="w-full lg:max-w-[80%]"
+          className="w-full lg:max-w-[80%] swiper-container"
+          style={{
+            height:"auto"
+          }}
         >
           {shoes.map((item, index) => (
             <SwiperSlide key={item.index}>
