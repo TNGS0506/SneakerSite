@@ -7,7 +7,7 @@ import FirstPage from './pages/FirstPage'
 import HighlightedShoes from "./pages/highlightedShoes";
 import Brands from "./components/Brands";
 import FourthSection from "./pages/FourthSection";
-
+import AllShoes from "./components/AllShoes";
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
       <HighlightedShoes/>
       <Brands/>
       <FourthSection/>
+      <AllShoes/>
       </div>
     </div>
       

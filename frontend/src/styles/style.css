@@ -28,19 +28,22 @@
 /* Styles for desktop layout */
 .photo,
 .text {
-    height: 100%; /* Fill the container height */
-    background-size: cover;
+    height: auto; /* Fill the container height */
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .quote {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    padding-right: 200px;
 }
 
 .description {
     font-size: 16px;
+    padding-right: 150px;
 }
 
 /* Styles for mobile layout */
@@ -52,4 +55,14 @@
 
 .text-mobile {
     padding-top: 20px; /* Add space between photo and text on mobile */
+}
+.quote-mobile{
+    font-weight : bold;
+    font-size: 24px;
+    padding-left: 36px;
+    padding-right: 16px;
+}
+.description-mobile{
+    padding-left: 36px;
+    padding-right: 20px;
 }

@@ -103,7 +103,7 @@ export const LogoImages = [
   },
 ]
 
-import JordanReklam from '../assets/images/quote23123.jpg'
+import JordanReklam from '../assets/images/quote23123.jpeg'
 export {
   JordanReklam
 }
