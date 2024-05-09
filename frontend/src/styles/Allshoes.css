@@ -1,3 +1,25 @@
-.swiper-container{
-    border:none;
+/* styles.css
+
+/* Style for the container of the cards */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style for individual cards */
+.card {
+    max-width: 320px; /* Default maximum width for cards */
+    margin: 10px; /* Add some space between cards */
+    padding: 10px; /* Add padding inside the cards */
+    border: 1px solid transparent; /* Ensure no border is visible */
+    border-radius: 8px; /* Add rounded corners to the cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    .card {
+        max-width: 280px; /* Adjust maximum width for smaller screens */
+    }
 }

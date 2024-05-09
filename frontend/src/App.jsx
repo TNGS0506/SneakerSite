@@ -8,7 +8,7 @@ import HighlightedShoes from "./pages/highlightedShoes";
 import Brands from "./components/Brands";
 import FourthSection from "./pages/FourthSection";
 import AllShoes from "./components/AllShoes";
-
+import Feedback from './components/Feedback'
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
       <Brands/>
       <FourthSection/>
       <AllShoes/>
+      <Feedback/>
       </div>
     </div>
       

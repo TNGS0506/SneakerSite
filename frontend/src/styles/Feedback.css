@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&display=swap');
+
+.feedback-container {
+    height: 300px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    justify-content: start;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.feedback-content {
+    margin-left: 120px;
+    margin-right:200px;
+    padding-top: 2px;
+}
+
+.feedback-heading {
+    margin-top: 22px;
+    margin-bottom: 16px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.feedback-text {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.feedback-profile {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+}
+
+.profile-info {
+    margin-left: 8px;
+}
+
+.profile-name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.profile-location {
+    font-size: 12px;
+    color: #888;
+}
+.feedback-star {
+    display: flex;
+    margin-top: 10px;
+
+}
+
+.star-icon {
+    background-image: url("../assets/star.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 35px; 
+    height: 35px; 
+    fill: white;
+    padding: 0;
+}
+@media (max-width: 768px) {
+    .feedback-container {
+        height: 300px;
+    }
+
+    .feedback-content {
+        margin-left: 20px;
+        margin-right: 10px;
+        padding-top: 24px;
+    }
+    
+    .feedback-heading {
+        margin-top: 1px;
+        margin-bottom: 18px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+    
+    .feedback-text {
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+    
+    .feedback-profile {
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .profile-image {
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
+    }
+    
+    .profile-info {
+        margin-left: 4px;
+    }
+    
+    .profile-name {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    .profile-location {
+        font-size: 10px;
+        margin-top: 3px;
+        color: #888;
+    }
+}

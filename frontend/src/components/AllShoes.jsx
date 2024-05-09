@@ -17,7 +17,7 @@ const AllShoes = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/shoes/");
+            const res = await axios.get("http://127.0.0.1:8000/allshoes/");
             setShoes(res.data);
         } catch (err) {
             console.log(err);
@@ -25,7 +25,7 @@ const AllShoes = () => {
     };
 
     return (
-        <div className=" swiper-container flex items-center justify-center flex-col auto lg:pb-5 pl-2 lg:pl-0 pt-36">
+        <div className="swiper-container sm:ml-10 flex items-center justify-center flex-col lg:pb-5 pl-2 lg:pl-0 pt-36">
             <Swiper
                 loop={true}
                 autoplay={{
@@ -34,8 +34,8 @@ const AllShoes = () => {
                 }}
                 breakpoints={{
                     340: {
-                        slidesPerView: 2.3, // Adjusted to show one slide on small screens
-                        spaceBetween: 120, // Adjust the space between slides for mobile
+                        slidesPerView: 2.7, // Adjusted to show one slide on small screens
+                        spaceBetween: 90, // Adjust the space between slides for mobile
                     },
                     700: {
                         slidesPerView: 6,
@@ -50,16 +50,16 @@ const AllShoes = () => {
                 className="w-full lg:max-w-[80%] border-none"
             >
                 {shoes.map((item, index) => (
-                    <SwiperSlide key={item.index} className='border-none'>
-                        <Card className="max-w-sm">
-                            <div className="relative" style={{ width: "200px", height: "130px" }}>
+                    <SwiperSlide key={index} className='border-none'>
+                        <Card className="max-w-sm lg:max-w-none border-none rounded-lg">
+                            <div className="relative rounded-xl " style={{ width: "180px", height: "130px" }}>
                                 <img
                                     src={item.image}
-                                    className="absolute inset-0 w-full h-full object-cover"
+                                    className="relative inset-0 rounded-lg w-full h-full object-cover"
                                 />
                             </div>
-                            <div className="pl-2 pt-4">
-                                <h5 className="text-xl tracking-tight text-gray-900 mb-5 dark:text-white">
+                            <div className="pl-2 pt-2">
+                                <h5 className="text-xl tracking-tight text-gray-900  dark:text-white">
                                     {item.name}
                                 </h5>
                                 <p className="font-normal text-gray-700 dark:text-gray-400">

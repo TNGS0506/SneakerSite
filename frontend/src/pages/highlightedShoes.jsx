@@ -19,7 +19,6 @@ const HighlightedShoes = () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/nike/");
       setShoes(response.data);
-      console.log("Shoes: ", shoes);
     } catch (error) {
       console.log("There was an error when fetching the data", error);
     }
@@ -40,7 +39,7 @@ const HighlightedShoes = () => {
           }}
           breakpoints={{
             340: {
-              slidesPerView:1.9, // Adjusted to show one slide on small screens
+              slidesPerView: 2.1, // Adjusted to show one slide on small screens
               spaceBetween: 50, // Adjust the space between slides for mobile
             },
             700: {
@@ -59,7 +58,7 @@ const HighlightedShoes = () => {
           }}
         >
           {shoes.map((item, index) => (
-            <SwiperSlide key={item.index}>
+            <SwiperSlide key={index}>
               <div className="flex flex-col rounded-xl group relative px-6 py-8 shadow-lg h-[150px] w-[215px] lg:h-[300px] lg:w-auto overflow-hidden cursor-pointer">
                 <div
                   className="absolute inset-0"
