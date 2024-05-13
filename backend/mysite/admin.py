@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shoe, Category, Size
+from .models import Shoe, Category, Size, Feedback
 
 
 
@@ -14,3 +14,6 @@ class ShoeAdmin(admin.ModelAdmin):
     
 
 admin.site.register(Category)
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('sender', 'text', 'created_date')

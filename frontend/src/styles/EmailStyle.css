@@ -1,0 +1,142 @@
+.container {
+    height: auto;
+    width: auto;
+}
+
+.pink-container {
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: auto;
+    background-color: #FF007F;
+    color: #FFFFFF;
+    margin: 36px 36px;
+    margin-top: 140px;
+    border-radius: 15px;
+}
+
+.third{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.fourth{
+    margin-top: 140px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+    justify-content: start;
+}
+.fifth{
+    margin-left: 150px;
+    font-size: 40px;
+}
+.sixth{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    align-items: center;
+    margin-top: 4rem;
+}
+.contact-div{
+    display: flex;
+    align-items: center;
+}
+.input-div{
+    position: relative;
+    left: 20%;
+    bottom: 10rem;
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+.input-form{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 2rem;
+}
+.button-class{
+    width: 16rem;
+    background-color: white;
+    height: 2.5rem;
+    border-radius: 1.5rem;
+}
+textarea{
+    background-color: #FF007F;
+}
+input{
+    background-color: #FF007F;
+}
+@media (max-width: 768px){
+    .container {
+        height: auto;
+        width: 100vw;
+    }
+    
+    .pink-container {
+        position: relative;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: auto;
+        background-color: #FF007F;
+        color: #FFFFFF;
+        margin: 36px 36px;
+        margin-top: 140px;
+        padding-bottom: 140px;
+        border-radius: 15px;
+    }
+    
+    .third{
+        display: flex;
+        flex-direction: column;
+        justify-content: start; 
+    }
+    .fourth{
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction:column;
+        justify-content: start;
+        
+
+    }
+    .fifth{
+        margin-left: 15px;
+        font-size: 30px;
+    }
+    .sixth{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 14px;
+    }
+    .contact-div{
+        display: flex;
+        align-items: center;
+        
+    }
+    .input-div{
+        display: flex;
+        left: 30px;
+        margin-top: 250px;
+        width: auto;
+    }
+    .input-form{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        gap: 2rem;
+    }
+    .button-class{
+        width: 16rem;
+        background-color: white;
+        height: 2.5rem;
+        border-radius: 1.5rem;
+    }
+}

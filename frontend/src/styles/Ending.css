@@ -1,0 +1,74 @@
+    .container1 {
+    position: relative;
+    top: 250px;
+    margin-top: 500px;
+    width: 100%;
+    height: 40vh;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+}
+.TheMap {
+    display: flex;
+    width: 100%;
+    margin-top: 36px;
+}
+
+.child {
+    flex: 1;
+}
+
+.child-content {
+    margin-left: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 24px;
+    padding: 0 20px;
+}
+
+.Paradise {
+    flex: 1;
+}
+
+
+.pelement {
+    font-size: 14px;
+    margin-top: 10px; /* Adjust as needed */
+    margin-left: 50px;
+}
+
+.zurag {
+    width: 200px;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: 60px;
+}
+.container3 {
+    position: absolute; 
+    bottom: 10px; 
+    right: 80px; 
+    display: flex;
+    justify-content: space-between; 
+    width: 120px;
+    gap: 20px;
+}
+
+.first-image {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 50px; 
+    height: 50px;
+    margin: 5px; 
+}
+
+.first-image:hover {
+    background-color: rgb(45, 45, 45);
+}

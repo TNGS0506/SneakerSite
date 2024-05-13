@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&display=swap');
 
 .feedback-container {
-    height: 300px;
+    height: auto;
     width: 100%;
     background-color: black;
     color: white;
@@ -11,9 +11,10 @@
 }
 
 .feedback-content {
+    padding-top: 5px;
     margin-left: 120px;
     margin-right:200px;
-    padding-top: 2px;
+    padding-bottom: 30px;
 }
 
 .feedback-heading {
@@ -71,13 +72,14 @@
 }
 @media (max-width: 768px) {
     .feedback-container {
-        height: 300px;
+        height: auto;
     }
 
     .feedback-content {
         margin-left: 20px;
         margin-right: 10px;
         padding-top: 24px;
+        padding-bottom: 30px;
     }
     
     .feedback-heading {

@@ -56,6 +56,15 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True  # For development, allow requests from all origins
 
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',  # Include OPTIONS for preflight requests
+]
+
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -113,7 +122,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Ulaanbaatar'
+
 
 USE_I18N = True
 

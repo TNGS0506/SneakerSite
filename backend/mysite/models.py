@@ -61,3 +61,9 @@ class User(AbstractUser):
         related_name='custom_user_permissions',
         related_query_name='custom_user_permission',
     )
+
+
+class Feedback(models.Model):
+    sender = models.CharField(max_length=50)
+    text = models.TextField(max_length=300)
+    created_date = models.DateTimeField(auto_now_add=True) 

@@ -62,8 +62,6 @@ import Logo5 from '../assets/images/under-armour.png'
 import Logo6 from '../assets/images/nike-logo-real.jpg'
 
 
-
-
 export const LogoImages = [
   {
     icon: RxCrop,
@@ -104,7 +102,13 @@ export const LogoImages = [
 ]
 
 import JordanReklam from '../assets/images/quote23123.jpeg'
+
+import Facebook from '../assets/facebook.svg'
+import Instagram from '../assets/instagram.png'
+
 export {
-  JordanReklam
+  JordanReklam,
+  Facebook,
+  Instagram,
 }
 

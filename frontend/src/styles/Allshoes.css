@@ -16,10 +16,17 @@
     border-radius: 8px; /* Add rounded corners to the cards */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
 }
+#h1{
+    padding-left: 164px;    
+}   
+
 
 /* Media query for mobile devices */
 @media (max-width: 767px) {
     .card {
         max-width: 280px; /* Adjust maximum width for smaller screens */
+    }
+    #h1{
+        padding-left: 2px;
     }
 }

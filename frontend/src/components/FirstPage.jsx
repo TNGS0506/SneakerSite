@@ -1,7 +1,7 @@
 import React from "react";
-import Model from "../components/Model";
+import Model from "./Model";
 import { styles } from "../styles";
-import ActiveSlider from "../components/ActiveSlider";
+import ActiveSlider from "./ActiveSlider";
 
 const FirstPage = () => {
 

@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination, Autoplay} from "swiper/modules";
-import Brands from "../components/Brands";
+import Brands from "./Brands";
 
 const HighlightedShoes = () => {
   const [shoes, setShoes] = useState([]);
@@ -17,7 +17,7 @@ const HighlightedShoes = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/nike/");
+      const response = await axios.get("http://127.0.0.1:8000/categories/nike/");
       setShoes(response.data);
     } catch (error) {
       console.log("There was an error when fetching the data", error);
