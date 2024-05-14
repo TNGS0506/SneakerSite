@@ -31,11 +31,17 @@ class Shoe(models.Model):
                 os.remove(image_path)
         super().delete(*args, **kwargs)
         
-        
+class ShoeImage(models.Model):
+    shoe = models.ForeignKey(Shoe, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(_("Image"), upload_to="shoe_images/")
+    
+    def __str__(self):
+        return f"{self.shoe.name} Image"
+
         
 
 class Size(models.Model):
-    shoe = models.ForeignKey('Shoe', on_delete=models.CASCADE)
+    shoe = models.ForeignKey('Shoe', related_name='sizes', on_delete=models.CASCADE)
     size = models.CharField(max_length=10)
 
     def __str__(self):
