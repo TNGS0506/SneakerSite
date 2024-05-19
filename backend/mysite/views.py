@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from mysite.models import Shoe, Category
-from .serializers import ShoeSerializer, FeedbackSerializer,ShoeImageSerializer
+from .serializers import ShoeSerializer, FeedbackSerializer,ShoeImageSerializer,CategorySerializer
 
 
 @api_view(['GET'])
@@ -37,4 +37,11 @@ def submit_feedback(request):
 def getShoe(request, shoeId):
     shoe = Shoe.objects.get(id=shoeId)
     serializer = ShoeSerializer(shoe, context={'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getCategories(request):
+    data = Category.objects.all()
+    serializer = CategorySerializer(data,many=True, context={"request" : request})
     return Response(serializer.data)

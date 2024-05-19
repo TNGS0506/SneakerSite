@@ -112,3 +112,9 @@ export {
   Instagram,
 }
 
+
+
+import GradientBackground from '../assets/images/v960-ning-11.jpg'
+export {
+  GradientBackground
+}

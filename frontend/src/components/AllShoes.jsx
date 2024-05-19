@@ -9,7 +9,7 @@ import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { Card } from 'flowbite-react'
 import arrow from '../assets/arrow.svg'
 import { Link } from 'react-router-dom';
-
+import ShoeCard from './ShoeCard';
 
 const AllShoes = () => {
     const [shoes, setShoes] = useState([]);
@@ -59,27 +59,14 @@ const AllShoes = () => {
             >
                 {shoes.map((item, index) => (
                     <SwiperSlide key={index} className='border-none'>
-                        <Link to={`/Shoes/${item.id.toString()}`} className="block border-none">
-                            <Card className="max-w-sm lg:max-w-none border-none rounded-lg">
-                                <div className="relative rounded-xl" style={{ width: "180px", height: "130px" }}>
-                                    <img
-                                        src={item.image}
-                                        className="relative inset-0 rounded-lg w-full h-full object-cover"
-                                    />
-                                </div>
-                                <div className="pl-2 pt-2">
-                                    <h5 className="text-xl tracking-tight text-gray-900  dark:text-white">
-                                        {item.name}
-                                    </h5>
-                                    <p className="font-normal text-gray-700 dark:text-gray-400">
-                                        ₮{item.price}
-                                    </p>
-                                </div>
-                            </Card>
-                        </Link>
+                        <ShoeCard
+                            id={item.id.toString()}
+                            image={item.image}
+                            name={item.name}
+                            price={item.price}
+                        />
                     </SwiperSlide>
                 ))}
-
             </Swiper>
             <div className='flex h-12 w-screen justify-end lg:pr-[165px] lg:mt-4 text-green-700'>
                 <h2 style={{marginRight: "10px"}}>Бүгдийг харах</h2>
