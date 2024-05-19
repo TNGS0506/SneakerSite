@@ -9,7 +9,6 @@ import FourthSection from "../components/FourthSection";
 import AllShoes from "../components/AllShoes";
 import Feedback from '../components/Feedback';
 import Email from '../components/Email';
-import Ending from "../components/Ending";
 
 
 function MainPage () {
@@ -23,7 +22,6 @@ function MainPage () {
             <AllShoes/>
             <Feedback/>
             <Email/>
-            <Ending/>
             </div>
         </div>
     );

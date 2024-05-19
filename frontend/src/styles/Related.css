@@ -1,0 +1,13 @@
+.related-products {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  border: 2px solid green;
+  height: 300px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}

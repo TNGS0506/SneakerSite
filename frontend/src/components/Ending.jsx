@@ -16,8 +16,8 @@ const Ending = () => {
                     
                 </div>    
 
-                <div className='Paradise'>
-                    <img className='zurag' src={Paradise}/>
+                <div className='Paradise rounded-xl'>
+                    <img className='zurag rounded-xl' src={Paradise}/>
                 </div>
             </div>
 

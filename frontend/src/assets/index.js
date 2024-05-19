@@ -9,7 +9,7 @@ import Mail from './mail.svg';
 import second_mail from './mail-box.svg'
 import black_account from './black-account.svg'
 import black_search from './black-searchIcon.svg'
-
+import menu2 from './menu2.svg'
 
 
 export {
@@ -23,5 +23,6 @@ export {
     Mail,
     white_logo,
     black_account,
-    black_search
+    black_search,
+    menu2,
 };

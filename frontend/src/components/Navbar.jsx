@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants/index";
-import { mylogo, menu, close, searchIcon, accountIcon, white_logo, black_account, black_search } from "../assets";
+import { mylogo, menu,menu2, close, searchIcon, accountIcon, white_logo, black_account, black_search } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -20,7 +20,7 @@ const Navbar = () => {
   const tsagaanLogo = location.pathname === '/' ?  mylogo : white_logo
   const accountIconUngu = location.pathname === '/' ? accountIcon: black_account;
   const searchIconUngu = location.pathname === '/' ? searchIcon : black_search 
-
+  const menuIconUngu = location.pathname === '/' ? menu : menu2
 
 
   return (
@@ -49,7 +49,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="flex items-center">
+        <div className="flex items-center lg:absolute lg:right-64">
           {/* Render search icon */}
           <img src={searchIconUngu} alt="search" className={`w-6 h-6 ${textColorClass}`} onClick={toggleSearchInput} /> 
 
@@ -58,7 +58,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Search"
-              className="px-3 py-1 rounded-md border bg-white border-gray-700 mr-4"
+              className="px-3 py-1 rounded-md border bg-white border-gray-700 mr-4 ml-4"
             />
           )}
 
@@ -73,7 +73,7 @@ const Navbar = () => {
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
+            className={`w-[28px] h-[28px] object-contain cursor-pointer`}
             onClick={() => setToggle(!toggle)}
           />
         </div>

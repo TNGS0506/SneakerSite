@@ -19,7 +19,7 @@ def getShoesTop(request):
 
 @api_view(["GET"])
 def getShoesByCategory(request, category_name):
-    category = Category.objects.get(name=category_name)
+    category = Category.objects.get(id=category_name)
     queryset = Shoe.objects.filter(category=category)
     serializer = ShoeSerializer(queryset, many=True, context={'request': request})
     return Response(serializer.data)

@@ -8,15 +8,18 @@ import "../styles/EmailStyle.css"
 const Email = () => {
     const [sender, setName] =useState("")
     const [text, setMessage] = useState("")
-
+    const [phone_number, setNumber] = useState("")
 
     const HandleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://127.0.0.1:8000/submit-feedback/', { sender, text })
+        axios.post('http://127.0.0.1:8000/submit-feedback/', { sender, phone_number,text })
             .then(response => {
                 console.log(response.data);
                 alert('Feedback submitted successfully!');
+                setName("");
+                setMessage("");
+                setNumber("");
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -50,6 +53,11 @@ const Email = () => {
                             <img src={accountIcon} className='w-6 h-6'/>
                             <input className='w-64 border-b-[1px] border-white outline-none' placeholder="Овог Нэг"
                                 value = {sender} onChange={(e) => setName(e.target.value)}/>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <img src={accountIcon} className='w-6 h-6'/>
+                            <input className='w-64 border-b-[1px] border-white outline-none' placeholder="Утасны дугаар"
+                                value = {phone_number} onChange={(e) => setNumber(e.target.value)}/>
                         </div>
                         <div className="flex items-center gap-2">
                             <img src={second_mail} className='w-6 h-6'/>

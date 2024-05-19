@@ -13,7 +13,7 @@ class Category(models.Model):
 class Shoe(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(_("Image"),upload_to="shoes/", null=True, blank=True)
-    price = models.IntegerField(max_length=20)  
+    price = models.IntegerField(null=True, blank=True)  
     description = models.CharField(max_length=200, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -38,6 +38,12 @@ class ShoeImage(models.Model):
     def __str__(self):
         return f"{self.shoe.name} Image"
 
+    def delete(self, *args, **kwargs):
+        if self.image:
+            image_path = self.image.path
+            if os.path.exists(image_path):
+                os.remove(image_path)
+        super().delete(*args,**kwargs)
         
 
 class Size(models.Model):
@@ -71,5 +77,6 @@ class User(AbstractUser):
 
 class Feedback(models.Model):
     sender = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=20)
     text = models.TextField(max_length=300)
     created_date = models.DateTimeField(auto_now_add=True) 

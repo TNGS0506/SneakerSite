@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from mysite.models import Shoe, Category, Feedback, ShoeImage, Size
 
-
 class ShoeImageSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
 
@@ -13,22 +12,11 @@ class ShoeImageSerializer(serializers.ModelSerializer):
         if obj.image:
             return self.context['request'].build_absolute_uri(obj.image.url)
         return None
-    
-    
-    
-    
-    
-    
-    
+
 class SizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Size
         fields = ['id', 'size']
-
-
-
-
-
 
 class ShoeSerializer(serializers.ModelSerializer):
     images = ShoeImageSerializer(many=True, read_only=True)
@@ -41,7 +29,7 @@ class ShoeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Shoe
-        fields = ['id', 'name','image', 'images', 'price','sizes', 'description', 'created_date', 'category', 'image_files']
+        fields = ['id', 'name', 'image', 'images', 'price', 'sizes', 'description', 'created_date', 'category', 'image_files']
 
     def get_image(self, obj):
         first_image = obj.images.first()
@@ -52,37 +40,34 @@ class ShoeSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         image_files = validated_data.pop('image_files', [])
         shoe = Shoe.objects.create(**validated_data)
+
+        # Check if the regular 'image' field is provided
+        if 'image' in validated_data:
+            image_files.append(validated_data['image'])
+
         for image_file in image_files:
             ShoeImage.objects.create(shoe=shoe, image=image_file)
+
         return shoe
 
     def update(self, instance, validated_data):
         image_files = validated_data.pop('image_files', [])
         instance = super().update(instance, validated_data)
+
+        # Check if the regular 'image' field is provided
+        if 'image' in validated_data:
+            image_files.append(validated_data['image'])
+
         for image_file in image_files:
             ShoeImage.objects.create(shoe=instance, image=image_file)
+
         return instance
-
-
-
-
-
-
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name']
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 class ItemSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     image = serializers.SerializerMethodField()
@@ -96,19 +81,8 @@ class ItemSerializer(serializers.ModelSerializer):
         if obj.image:
             return self.context['request'].build_absolute_uri(obj.image.url)
         return None
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feedback
-        fields = ['sender', 'text', 'created_date']
-        
+        fields = ['sender', 'phone_number', 'text', 'created_date']

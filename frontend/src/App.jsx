@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import Shoes from "./pages/Shoes";
 import Navbar from "./components/Navbar";
 import ProductPage from "./pages/ProductPage";
+import Ending from './components/Ending'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='/Shoes/' element={<Shoes/>} />
         <Route path='/shoes/:shoeId' element={<ProductPage/>} />
       </Routes>
+      <Ending/>
     </BrowserRouter>
     
   );

@@ -11,13 +11,14 @@ const ActiveSlider = () => {
     <div className="flex items-center justify-center flex-col auto bg-black lg:pb-5 pl-2 lg:pl-0">
       <Swiper
         loop={true}
+        centeredSlides={true}
         autoplay={{
-          delay: 2000,
+          delay: 500,
           disableOnInteraction: false
         }}
         breakpoints={{
           340: {
-            slidesPerView: 2, // Adjusted to show one slide on small screens
+            slidesPerView: 3, // Adjusted to show one slide on small screens
             spaceBetween: 30, // Adjust the space between slides for mobile
           },
           700: {
