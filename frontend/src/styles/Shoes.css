@@ -74,7 +74,6 @@
     height: auto;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 30px;
- 
 }
 
 .CategoryContainer {
@@ -84,7 +83,27 @@
     margin: 20px 0;
     margin-left: 100px;
     font-size: 20px;
+    cursor: pointer;
 }   
+.liElement {
+    position: relative;
+    cursor: pointer;
+}
+.liElement::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Adjust the underline height as needed */
+    background-color: rgb(76, 22, 225); /* Adjust the color of the underline */
+    transition: width 0.3s ease;
+}
+
+  /* Apply the hover effect */
+.liElement:hover::after {
+    width: 50%;
+} 
 
 .UlSda {
     list-style: none;
@@ -142,7 +161,9 @@
     .pStyle{
         display: none;
     }
-    
+    .UguulberContainer{
+        display: none;
+    }
     .TheShoeContainer {
         flex: block;
         background-image: url("../assets/images/TheShoe.png");

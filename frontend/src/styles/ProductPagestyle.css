@@ -48,7 +48,9 @@
   width: 100%;
   border: 1px solid black;
 }
-
+.sizes:hover{
+  background-color: rgb(186, 186, 186);
+}
 
 
 

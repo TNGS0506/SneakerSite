@@ -64,13 +64,14 @@ const Shoes = () => {
             </div>
             <div className='AllContainer p-0 m-0 w-full'>
                 <div className='CategoryContainer'>
-                    <ul className='UlSda'>
-                        {categories
-                            .filter(category => category.name !== "Highlights")
-                            .map((category, index) => (
-                                <li key={index}>{category.name}</li>
-                            ))}
-                    </ul>
+                <ul className='UlSda'>
+                    {categories
+                        .filter(category => category.name !== "Highlights")
+                        .map((category, index) => (
+                    <li key={index} className='liElement'>{category.name}</li>
+                ))}
+                </ul>
+                
                 </div>
 
                 <div className='ShoesContainer'>

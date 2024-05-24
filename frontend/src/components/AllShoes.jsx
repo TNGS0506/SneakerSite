@@ -46,7 +46,7 @@ const AllShoes = () => {
                         spaceBetween: 90, // Adjust the space between slides for mobile
                     },
                     700: {
-                        slidesPerView: 6,
+                        slidesPerView: 5,
                         spaceBetween: 15, // Default space between slides for larger screens
                     },
                 }}
@@ -64,6 +64,8 @@ const AllShoes = () => {
                             image={item.image}
                             name={item.name}
                             price={item.price}
+                            width={"210px"}
+                            height={"150px"}
                         />
                     </SwiperSlide>
                 ))}

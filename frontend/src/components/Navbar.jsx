@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants/index";
 import { mylogo, menu,menu2, close, searchIcon, accountIcon, white_logo, black_account, black_search } from "../assets";
-
+import "../styles/Navbar.css"
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -44,7 +44,7 @@ const Navbar = () => {
               className={`text-[18px] font-medium cursor-pointer ${active === link.title ? 'font-bold' : ''}`}
               onClick={() => setActive(link.title)}
             >
-              <a href={`#${link.id}`}>{link.title}</a>
+              <a href={`${link.id}`}>{link.title}</a>
             </li>
           ))}
         </ul>
@@ -63,7 +63,7 @@ const Navbar = () => {
           )}
 
           {/* Account Section */}
-          <div className="flex items-center ml-4">
+          <div className="hover-effect flex items-center ml-4 ">
             <img src={accountIconUngu} alt="account" className={`w-6 h-6 ${textColorClass}`}/> 
           </div>
         </div>

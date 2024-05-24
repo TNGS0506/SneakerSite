@@ -16,20 +16,26 @@ const ProductPage = () => {
     const [images, setImages] = useState([]);
     const [categoryId, setCategoryId] = useState(0);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0); // New state to track the index of the selected big image
+    const [sizes, setSizes] =useState([])
+
+
+    let { shoeId } = useParams();
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [shoeId]);
 
-    let { shoeId } = useParams();
+    
 
     const fetchData = async () => {
         try {
             const res = await axios.get(`http://127.0.0.1:8000/shoes/${shoeId}/`);
             setShoe(res.data);
             setImages(res.data.images);
-            setCategoryId(res.data.categoryId);
-            console.table(res.data);
+            setCategoryId(res.data.category);
+            setSizes(res.data.sizes)
+
+            // console.table(res.data);
         } catch (err) {
             console.log(err);
         }
@@ -94,8 +100,19 @@ const ProductPage = () => {
                             {shoe.description}
                         </p>
                         <h6 className='text-2xl font-semibold'>₮{shoe.price}</h6>
+                        <h1 className='mt-12'>Бэлэн хэмжээнүүд:</h1>
+                        <div className='flex flex-row gap-2 items-center justify-start'>
+                            {sizes.map((sizeObj) => (
+                                <h6 className='sizes p-2 border border-black rounded-md w-[8%] justify-center flex items-center' key={sizeObj.id}>{sizeObj.size}</h6>
+                            ))}
+                        </div>
                     </div>
+
+
                 </div>
+
+
+
                 <RelatedProducts shoeId={categoryId} />
             </div>
         </body>
