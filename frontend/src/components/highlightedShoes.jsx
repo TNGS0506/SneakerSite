@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination, Autoplay} from "swiper/modules";
 import Brands from "./Brands";
+import { Link } from "react-router-dom";
 
 const HighlightedShoes = () => {
   const [shoes, setShoes] = useState([]);
@@ -59,6 +60,7 @@ const HighlightedShoes = () => {
         >
           {shoes.map((item, index) => (
             <SwiperSlide key={index}>
+              <Link to={`/Shoes/${item.id.toString()}`}>
               <div className="flex flex-col rounded-xl group relative px-6 py-8 shadow-lg h-[150px] w-[215px] lg:h-[300px] lg:w-auto overflow-hidden cursor-pointer">
                 <div
                   className="absolute inset-0"
@@ -70,6 +72,8 @@ const HighlightedShoes = () => {
                 />
                 <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
               </div>
+              </Link>
+              
             </SwiperSlide>
           ))}
         </Swiper>

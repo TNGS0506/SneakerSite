@@ -18,7 +18,7 @@ const ActiveSlider = () => {
         }}
         breakpoints={{
           340: {
-            slidesPerView: 3, // Adjusted to show one slide on small screens
+            slidesPerView: 2, // Adjusted to show one slide on small screens
             spaceBetween: 30, // Adjust the space between slides for mobile
           },
           700: {

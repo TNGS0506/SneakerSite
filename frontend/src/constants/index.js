@@ -4,12 +4,8 @@ export const navLinks = [
       title: "Нүүр",
     },
     {
-      id: "shoes",
+      id: "/shoes",
       title: "Категори",
-    },
-    {
-      id: "contact",
-      title: "Холбоо барих",
     },
   ];
 
