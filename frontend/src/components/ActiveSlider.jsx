@@ -4,7 +4,7 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { RxArrowTopRight } from "react-icons/rx";
-import { ServiceData } from "../constants";
+import { ServiceData } from "../constants/index.js";
 
 const ActiveSlider = () => {
   return (

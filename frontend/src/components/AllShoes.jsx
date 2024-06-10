@@ -86,7 +86,10 @@ const AllShoes = () => {
         ))}
       </Swiper>
       <div className="flex h-12 w-screen justify-end lg:pr-[165px] lg:mt-4 text-green-700">
-        <h2 style={{ marginRight: "10px" }}>Бүгдийг харах</h2>
+        <Link to={`/Shoes`}>
+          <h2 style={{ marginRight: "10px", cursor: "pointer", }}>Бүгдийг харах</h2>
+        </Link>
+        
         <img
           src={arrow}
           alt="Arrow Icon"

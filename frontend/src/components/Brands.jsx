@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogoImages } from '../constants';
+import { LogoImages } from '../constants/index.js';
 
 const Brands = () => {
     return (
