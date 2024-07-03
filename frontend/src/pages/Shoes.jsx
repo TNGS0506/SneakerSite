@@ -58,9 +58,7 @@ const Shoes = () => {
 
       <div className="UguulberContainer">
         <p>
-          Phasellus eleifend, metus ac egestas suscipit, quam lacus mattis
-          dolor, at tincidunt massa metus et nunc. Nam pharetra arcu tortor,
-          vulputate vulputate neque semper ac. Etiam purus ligula.
+        When you see someone putting on his Big Boots, you can be pretty sure that an Adventure is going to happen.
         </p>
       </div>
 

@@ -74,7 +74,6 @@ class User(AbstractUser):
         related_query_name='custom_user_permission',
     )
 
-
 class Feedback(models.Model):
     sender = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=20)

@@ -17,26 +17,37 @@ function Form({ route, method }) {
     const handleSubmit = async (e) => {
         setLoading(true);
         e.preventDefault();
-
+    
         try {
             const res = await api.post(route, { username, password });
-
+    
             if (method === "Login") {
-                console.log('Login successful:', res.data); // Debugging log
+                console.log('Login successful:', res.data);
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+                window.alert("Хэрэглэгч амжилттай нэвтэрлээ");
                 navigate("/");
             } else {
-                console.log('Registration successful:', res.data); // Debugging log
+                console.log('Registration successful:', res.data);
+                window.alert("Хэрэглэгч амжилттай бүртгэгдлээ");
                 navigate("/login");
             }
         } catch (error) {
-            console.error('Error during form submission:', error); // Debugging log
-            alert("Login failed. Please check your credentials and try again.");
+            console.error('Error during form submission:', error);
+            if (error.response) {
+                if (error.response.status === 400 && error.response.data.username) {
+                    alert(`Тус нэр бүртгэлтэй тул өөр нэр сонгоно уу`);
+                } else {
+                    alert(`Error: ${error.response.data.detail}`);
+                }
+            } else {
+                alert("An error occurred. Please try again.");
+            }
         } finally {
             setLoading(false);
         }
     };
+    
 
     return (
         <form onSubmit={handleSubmit} className="form-container">

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import '../styles/ProductPagestyle.css';
 import RelatedProducts from '../components/RelatedProducts';
+import { server } from '../constants';
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -29,7 +30,7 @@ const ProductPage = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/shoes/${shoeId}/`);
+            const res = await axios.get(server + `shoes/${shoeId}/`);
             setShoe(res.data);
             setImages(res.data.images);
             setCategoryId(res.data.category);
@@ -83,7 +84,7 @@ const ProductPage = () => {
                                             src={image.image}
                                             alt=""
                                             key={index}
-                                            className='w-24 h-24 rounded-md cursor-pointer border border-gray-400'
+                                            className='w-24 h-24 object-cover rounded-md cursor-pointer border border-gray-400'
                                             onClick={() => handleMiniImageClick(index)}
                                         />
                                     </SwiperSlide>

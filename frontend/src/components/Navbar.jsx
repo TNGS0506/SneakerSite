@@ -43,13 +43,13 @@ const Navbar = () => {
     } else {
       setIsLoggedIn(false);
     }
-  }, [localStorage.getItem(ACCESS_TOKEN)]); // Add a dependency on the token to re-check login status
+  }, [localStorage.getItem(ACCESS_TOKEN)]);
 
   const location = useLocation();
 
   const toggleSearchInput = () => {
     setShowSearchInput((prev) => !prev);
-    setShowDropdown(false);  // Hide dropdown when toggling search input
+    setShowDropdown(false);  
   };
 
   const handleLogout = () => {
@@ -168,7 +168,7 @@ const Navbar = () => {
             </div>
           )}
 
-          {isLoggedIn && ( // Render account icon and logout button if user is logged in
+          {isLoggedIn && ( 
             <div className="flex items-center ml-4">
               <Link to={"/userProfile/"}>
               <img src={accountIconUngu} alt="account" className={`w-6 h-6 ${textColorClass}`} />
@@ -180,7 +180,7 @@ const Navbar = () => {
             </div>
           )}
 
-          {!isLoggedIn && ( // Render login and register buttons if user is not logged in
+          {!isLoggedIn && ( 
             <div className="ml-4">
               <Link to="/Login">
                 <button className={`px-3 py-1 rounded-md border ${textColorClass} border-gray-700 ml-2`}>

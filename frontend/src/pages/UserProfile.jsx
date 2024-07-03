@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN } from "../constants";
-import "../styles/UserProfile.css"; // Create and import your CSS file for styling
+import "../styles/UserProfile.css"; 
+import { server } from "../constants";
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
@@ -17,12 +18,13 @@ const UserProfile = () => {
           return;
         }
 
-        const response = await axios.get("http://127.0.0.1:8000/api/user/profile/", {
+        const response = await axios.get(server + "api/user/profile/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setUser(response.data);
+        console.table(response.data);
       } catch (error) {
         console.error("Error fetching user data", error);
         navigate("/login");
@@ -32,25 +34,25 @@ const UserProfile = () => {
     fetchUserData();
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem(ACCESS_TOKEN);
-    navigate("/login");
-  };
+  console.log(user.id)
+
 
   return (
     <div className="profile-container">
-      <h1 className="profile-header">User Profile</h1>
+      <h1 className="profile-header">Хувийн мэдээлэл</h1>
       <div className="profile-details">
         <div className="profile-item">
-          <strong>Username:</strong> {user.username}
+          <strong>Хэрэглэгчийн нэр:</strong> {user.username}
         </div>
         <div className="profile-item">
-          <strong>Email:</strong> {user.email}
+          <strong>Email:</strong> {user.email_address}
         </div>
-        {/* Add more user details as needed */}
+        <div className="profile-item">
+          <strong>Утасны дугаар:</strong> {user.phone_number}
+        </div>
       </div>
-      <button className="profile-logout-button" onClick={handleLogout}>
-        Logout
+      <button className="profile-logout-button" onClick={() => navigate("/EditProfile")} >
+        <a href='/EditProfile'>Өөрчлөх</a>
       </button>
     </div>
   );

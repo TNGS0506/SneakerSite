@@ -92,21 +92,34 @@ class FeedbackSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'phone_number', 'email_address', 'image', 'groups', 'user_permissions']
+        fields = ['id', 'username','phone_number', 'email_address']
+        read_only_fields = ['username']
         extra_kwargs = {
             'password': {'write_only': True}
         }
 
     def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password']
+        )
         return user
-
-    def update(self, instance, validated_data):
-        for attr, value in validated_data.items():
-            if attr == 'password':
-                instance.set_password(value)
-            else:
-                setattr(instance, attr, value)
-        instance.save()
-        return instance
     
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+    def validate_username(self, value):
+        if User.objects.filter(username=value).exists():
+            raise serializers.ValidationError("Username already exists")
+        return value
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
+        return user

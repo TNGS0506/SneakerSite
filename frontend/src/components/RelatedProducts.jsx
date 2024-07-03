@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import '../styles/Related.css'
 import ShoeCard from "./ShoeCard";
+import { server } from "../constants";
 
 
 
@@ -18,7 +19,7 @@ const RelatedProducts = ({shoeId}) => {
 
     const fetchData = async() => {
         try{
-            const res = await axios.get(`http://127.0.0.1:8000/categories/${shoeId}/`)
+            const res = await axios.get(server + `categories/${shoeId}/`)
             setProduct(res.data);
             console.table('relatedProducts data:',res.data);
         }catch(err){

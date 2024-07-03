@@ -8,6 +8,7 @@ import Ending from './components/Ending'
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserProfile from "./pages/UserProfile";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/login/' element={<Login/>}/>
         <Route path='/register/' element={<Register/>}/>
         <Route path="/userProfile/" element = {<UserProfile/>}/>
+        <Route path='/EditProfile/' element = {<EditProfile/>}/>
       </Routes>
       <Ending/>
     </BrowserRouter>

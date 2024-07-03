@@ -7,6 +7,7 @@ import "swiper/css/free-mode";
 import { FreeMode, Pagination, Autoplay} from "swiper/modules";
 import Brands from "./Brands";
 import { Link } from "react-router-dom";
+import { server } from "../constants";
 
 const HighlightedShoes = () => {
   const [shoes, setShoes] = useState([]);
@@ -18,7 +19,7 @@ const HighlightedShoes = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/categories/4/");
+      const response = await axios.get(server + "categories/4/");
       setShoes(response.data);
     } catch (error) {
       console.log("There was an error when fetching the data", error);

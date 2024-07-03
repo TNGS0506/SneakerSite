@@ -10,6 +10,7 @@ import { Card } from "flowbite-react";
 import arrow from "../assets/arrow.svg";
 import { Link } from "react-router-dom";
 import ShoeCard from "./ShoeCard";
+import { server } from "../constants";
 
 const AllShoes = () => {
   const [shoes, setShoes] = useState([]);
@@ -20,7 +21,7 @@ const AllShoes = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/allshoes/");
+      const res = await axios.get(server + "allshoes/");
       setShoes(res.data);
     } catch (err) {
       console.log(err);

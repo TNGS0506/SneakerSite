@@ -3,7 +3,7 @@ import axios from 'axios'
 import { accountIcon,Mail, second_mail, Phone } from '../assets'
 import { useState, useEffect } from 'react';
 import "../styles/EmailStyle.css"
-
+import { server } from '../constants';
 
 const Email = () => {
     const [sender, setName] =useState("")
@@ -13,7 +13,7 @@ const Email = () => {
     const HandleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://127.0.0.1:8000/submit-feedback/', { sender, phone_number,text })
+        axios.post(server + 'submit-feedback/', { sender, phone_number,text })
             .then(response => {
                 console.log(response.data);
                 alert('Feedback submitted successfully!');
