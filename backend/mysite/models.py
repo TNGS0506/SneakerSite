@@ -16,7 +16,7 @@ class Shoe(models.Model):
     price = models.IntegerField(null=True, blank=True)  
     description = models.CharField(max_length=200, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.name
@@ -24,7 +24,7 @@ class Shoe(models.Model):
     def delete(self, *args, **kwargs):
         # Delete the associated image file before deleting the object
         if self.image:
-            # Get the path to the image file
+            # Get the path to the imabge file
             image_path = self.image.path
             # Delete the file from storage
             if os.path.exists(image_path):
