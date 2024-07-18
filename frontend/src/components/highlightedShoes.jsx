@@ -19,7 +19,7 @@ const HighlightedShoes = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(server + "categories/4/");
+      const response = await axios.get(server + "categories/1/");
       setShoes(response.data);
     } catch (error) {
       console.log("There was an error when fetching the data", error);

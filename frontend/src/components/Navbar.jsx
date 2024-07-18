@@ -5,7 +5,7 @@ import { navLinks } from "../constants/index";
 import { mylogo, menu, menu2, close, searchIcon, accountIcon, white_logo, black_account, black_search } from "../assets";
 import "../styles/Navbar.css";
 import axios from 'axios';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.js";
+import { ACCESS_TOKEN, REFRESH_TOKEN,server } from "../constants.js";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -20,7 +20,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/allshoes/')
+    axios.get(server + "allshoes/")
       .then(res => {
         setData(res.data);
         setFilteredData(res.data);
@@ -114,7 +114,7 @@ const Navbar = () => {
           <img src={tsagaanLogo} alt="logo" className="w-24 h-24 object-contain" />
         </Link>
 
-        <ul className={`list-none hidden sm:flex flex-row gap-10 justify-center flex-grow ${textColorClass}`}>
+        <ul className={`list-none hidden sm:flex flex-row gap-10 justify-center pr-48 flex-grow ${textColorClass}`}>
           {navLinks.map((link) => (
             <li
               key={link.id}
@@ -126,7 +126,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="flex items-center lg:absolute lg:right-64 relative">
+        <div className="flex items-center lg:absolute lg:right-24 relative">
           {!showSearchInput && (
             <img src={searchIconUngu} alt="search" className={`w-6 h-6 ${textColorClass}`} onClick={toggleSearchInput} />
           )}
@@ -143,9 +143,9 @@ const Navbar = () => {
                 />
                 <button 
                   onClick={handleSearchButtonClick} 
-                  className="px-3 py-1 rounded-md border bg-blue-400 text-white border-gray-700 ml-2"
+                  className="px-3 py-1 rounded-md border bg-gray-200 text-white border-gray-700 ml-1"
                 >
-                  Search
+                    Хайх
                 </button>
               </div>
               {showDropdown && (
@@ -175,7 +175,7 @@ const Navbar = () => {
               </Link>
               
               <button className={`px-3 py-1 rounded-md border ${textColorClass} border-gray-700 ml-2`} onClick={handleLogout}>
-                Logout
+                Гарах
               </button>
             </div>
           )}
@@ -184,12 +184,12 @@ const Navbar = () => {
             <div className="ml-4">
               <Link to="/Login">
                 <button className={`px-3 py-1 rounded-md border ${textColorClass} border-gray-700 ml-2`}>
-                  Login
+                  Нэвтрэх
                 </button>
               </Link>
               <Link to="/Register">
                 <button className={`px-3 py-1 rounded-md border ${textColorClass} border-gray-700 ml-2`}>
-                  Register
+                  Бүртгүүлэх
                 </button>
               </Link>
             </div>
