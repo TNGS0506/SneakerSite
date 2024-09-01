@@ -21,7 +21,10 @@ SECRET_KEY = 'django-insecure-eqqw0xh3#r1-z#=tm9%4pghth^h3t_)gf+j)&&v35d@^h7%)ux
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 AUTH_USER_MODEL = 'mysite.User'
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['msstore.mn', '185.97.146.28', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = ['https://msstore.mn', 'http://185.97.146.28']
+
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -77,14 +80,14 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # For development, allow requests from all origins
-
+CORS_ALLOWS_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
     'PUT',
     'PATCH',
     'DELETE',
-    'OPTIONS',  # Include OPTIONS for preflight requests
+    'OPTIONS', 
 ]
 
 

@@ -41,30 +41,34 @@ const AllShoes = () => {
         }}
         breakpoints={{
           320: {
-            // Adjusted breakpoint for extra small devices
-            slidesPerView: 1.5, // Show 1.5 slides on very small screens
-            spaceBetween: 10, // Space between slides for very small screens
+           
+            slidesPerView: 1.5, 
+            spaceBetween: 10, 
           },
           480: {
-            // Adjusted breakpoint for small devices
-            slidesPerView: 2.7, // Show 2.7 slides on small screens
-            spaceBetween: 20, // Adjusted space between slides for small screens
+            
+            slidesPerView: 2.7,
+            spaceBetween: 20, 
           },
           768: {
-            // Adjusted breakpoint for medium devices
-            slidesPerView: 3.5, // Show 3.5 slides on medium screens
-            spaceBetween: 30, // Adjusted space between slides for medium screens
+           
+            slidesPerView: 3.5, 
+            spaceBetween: 30,
           },
           1024: {
-            // Adjusted breakpoint for large devices
-            slidesPerView: 4.5, // Show 4.5 slides on large screens
-            spaceBetween: 40, // Adjusted space between slides for large screens
+            
+            slidesPerView: 4.5,
+            spaceBetween: 40,
           },
           1280: {
-            // Adjusted breakpoint for extra large devices
-            slidesPerView: 6, // Show 5 slides on extra large screens
-            spaceBetween: 50, // Adjusted space between slides for extra large screens
+            
+            slidesPerView: 5.1, 
+            spaceBetween: 40,
           },
+          1650: {
+            slidesPerView: 6,
+            spaceBetween: 40,
+          }
         }}
         freeMode={true}
         pagination={{
