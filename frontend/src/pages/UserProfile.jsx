@@ -1,41 +1,23 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN } from "../constants";
-import "../styles/UserProfile.css"; 
-import { server } from "../constants";
+import "../styles/UserProfile.css";
+import { GET_LOGGED_IN_USER } from "../../graphql/queries";
+import { useQuery } from "@apollo/client";
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
+  const { data, loading, error } = useQuery(GET_LOGGED_IN_USER);
+
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem(ACCESS_TOKEN);
-        if (!token) {
-          navigate("/login");
-          return;
-        }
+    if (data && data.viewer) {
+      setUser(data.viewer);
+    }
+  }, [data]);
 
-        const response = await axios.get(server + "api/user/profile/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setUser(response.data);
-        console.table(response.data);
-      } catch (error) {
-        console.error("Error fetching user data", error);
-        navigate("/login");
-      }
-    };
-
-    fetchUserData();
-  }, [navigate]);
-
-  console.log(user.id)
-
+  if (loading) return console.log(loading);
+  if (error) return console.log(error.message);
 
   return (
     <div className="profile-container">
@@ -45,14 +27,17 @@ const UserProfile = () => {
           <strong>Хэрэглэгчийн нэр:</strong> {user.username}
         </div>
         <div className="profile-item">
-          <strong>Email:</strong> {user.email_address}
+          <strong>Email:</strong> {user.email}
         </div>
         <div className="profile-item">
-          <strong>Утасны дугаар:</strong> {user.phone_number}
+          <strong>Утасны дугаар:</strong> {user.phoneNumber}
         </div>
       </div>
-      <button className="profile-logout-button" onClick={() => navigate("/EditProfile")} >
-        <a href='/EditProfile'>Өөрчлөх</a>
+      <button
+        className="profile-logout-button"
+        onClick={() => navigate("/EditProfile")}
+      >
+        <a href="/EditProfile">Өөрчлөх</a>
       </button>
     </div>
   );

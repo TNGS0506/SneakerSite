@@ -22,13 +22,10 @@ class Shoe(models.Model):
         return self.name
     
     def delete(self, *args, **kwargs):
-        # Delete the associated image file before deleting the object
         if self.image:
-            # Get the path to the imabge file
             image_path = self.image.path
-            # Delete the file from storage
             if os.path.exists(image_path):
-                os.remove(image_path)
+                os.remove
         super().delete(*args, **kwargs)
         
 class ShoeImage(models.Model):
@@ -58,7 +55,6 @@ class User(AbstractUser):
     email_address = models.EmailField(max_length=254)
     image = models.ImageField(upload_to="user_images/", null=True, blank=True)
     
-    # Define groups and permissions directly in the User class
     groups = models.ManyToManyField(
         'auth.Group',
         blank=True,
@@ -66,7 +62,6 @@ class User(AbstractUser):
         related_query_name='custom_user',
     )
     
-    # Provide a custom related_name for user_permissions to avoid clashes
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         blank=True,

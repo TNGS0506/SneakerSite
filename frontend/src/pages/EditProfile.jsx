@@ -1,106 +1,62 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN } from "../constants";
 import "../styles/EditProfile.css";
-import { server } from "../constants";
+import { UPDATE_USER_PROFILE, GET_LOGGED_IN_USER } from "../../graphql/queries";
+import { useMutation, useQuery } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 
 const EditProfile = () => {
-  const [user, setUser] = useState({ username: "", email_address: "", phone_number: "" });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
+  const client = useApolloClient();
 
+  // Fetch user data
+  const { data, loading, error } = useQuery(GET_LOGGED_IN_USER);
+
+  // Handle loading and error states without affecting hooks
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem(ACCESS_TOKEN);
-        if (!token) {
-          console.log("No token found, redirecting to login");
-          navigate("/login");
-          return;
-        }
-
-        console.log("Fetching user data with token:", token);
-
-        const response = await axios.get(
-          server + "api/user/profile/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setUser(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching user data", error);
-        handleTokenError(error); // Handle token error here
-      }
-    };
-
-    fetchUserData();
-  }, [navigate]);
-
-  const handleTokenError = (error) => {
-    const { response } = error;
-    if (response && response.data && response.data.code === "token_not_valid") {
-      console.log("Token is invalid or expired. Redirecting to login.");
-      localStorage.removeItem(ACCESS_TOKEN); // Clear invalid token
-      navigate("/login");
-    } else {
-      console.error("Unexpected error:", error);
-      setError("Unexpected error occurred");
+    if (data?.viewer) {
+      setEmail(data.viewer.email || ""); // Ensure that email has a default value
+      setPhoneNumber(data.viewer.phoneNumber || ""); // Ensure that phoneNumber has a default value
     }
-  };
+  }, [data]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
+  // Safe access to username
+  const username = data?.viewer?.username;
+
+  // Mutation for updating user profile
+  const [updateUserProfile, { loading: updating, error: updateError }] =
+    useMutation(UPDATE_USER_PROFILE, {
+      onCompleted: () => {
+        client.refetchQueries({ include: ["GET_LOGGED_IN_USER"] });
+        navigate("/userProfile");
+        window.location.reload();
+      },
+      onError: (error) => {
+        console.error(error);
+      },
     });
-  };
 
+  // Handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem(ACCESS_TOKEN);
-      if (!token) {
-        console.log("No token found, redirecting to login");
-        navigate("/login");
-        return;
-      }
-
-      console.log("Updating user data with token:", token);
-
-      const response = await axios.put(
-        server + "api/user/profile/",
-        user,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("User data updated successfully", response.data);
-    
-      navigate("/userProfile");
-      window.alert("Хэрэглэгчийн мэдээлэл амжилттай шинэчлэгдлээ")
+      await updateUserProfile({ variables: { username, email, phoneNumber } });
+      window.alert("Хэрэглэгчийн мэдээлэл амжилттай шинэчлэгдлээ");
     } catch (error) {
       console.error("Error updating user data", error);
-      handleTokenError(error); // Handle token error here
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // Render loading and error states
+  if (loading || updating) return <p>Loading...</p>;
+  if (error || updateError)
+    return <p>Error: {error?.message || updateError?.message}</p>;
 
   return (
     <div className="edit-profile-container">
       <h1 className="edit-profile-header">Edit Profile</h1>
-      {error && <div className="error-message">{error}</div>}
       <form className="edit-profile-form" onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -108,9 +64,9 @@ const EditProfile = () => {
             type="text"
             id="username"
             name="username"
-            value={user.username}
-            onChange={handleInputChange}
-            required
+            value={username}
+            placeholder="Enter new username"
+            disabled
           />
         </div>
         <div className="form-group">
@@ -119,8 +75,9 @@ const EditProfile = () => {
             type="email"
             id="email_address"
             name="email_address"
-            value={user.email_address}
-            onChange={handleInputChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter new email"
             required
           />
         </div>
@@ -130,8 +87,9 @@ const EditProfile = () => {
             type="text"
             id="phone_number"
             name="phone_number"
-            value={user.phone_number}
-            onChange={handleInputChange}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            placeholder="Enter new phone number"
             required
           />
         </div>

@@ -7,6 +7,15 @@ from .serializers import ShoeSerializer, FeedbackSerializer,ShoeImageSerializer,
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import UserSerializer
 
+from graphene_django.views import GraphQLView
+
+class CustomGraphQLView(GraphQLView):
+    def get_context(self, request):
+        print("Request Headers:", request.headers) 
+        user = request.user
+        print("auth user", user)
+        return super().get_context(request)
+
 class UserRegistrationView(APIView):
     permission_classes = [AllowAny]
 

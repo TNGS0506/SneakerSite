@@ -1,30 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
-import { FreeMode, Pagination, Autoplay} from "swiper/modules";
-import Brands from "./Brands";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
+
 import { Link } from "react-router-dom";
-import { server } from "../constants";
+import { media } from "../constants";
+import { GET_TOP4 } from "../../graphql/queries";
+import { useQuery } from "@apollo/client";
 
 const HighlightedShoes = () => {
-  const [shoes, setShoes] = useState([]);
-  const [shoeImagePath, setShoeImagePath] = useState("");
+  const { data, loading, error } = useQuery(GET_TOP4);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  if (loading) return <p>loading</p>;
+  if (error) return <p>Error... {error.message}</p>;
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(server + "categories/1/");
-      setShoes(response.data);
-    } catch (error) {
-      console.log("There was an error when fetching the data", error);
-    }
-  };
+  const images = data.topShoes;
 
   return (
     <div className="h-auto w-full pt-24 lg:pt-64 pl-2 lg:pl-0">
@@ -34,19 +25,19 @@ const HighlightedShoes = () => {
 
       <div className="flex items-center justify-center flex-col lg:pb-5 pt-12">
         <Swiper
-          loop={true}
+          loop={false}
           autoplay={{
             delay: 100,
-            disableOnInteraction: false
+            disableOnInteraction: false,
           }}
           breakpoints={{
             340: {
-              slidesPerView: 2.1, // Adjusted to show one slide on small screens
-              spaceBetween: 50, // Adjust the space between slides for mobile
+              slidesPerView: 2.1,
+              spaceBetween: 50,
             },
             700: {
               slidesPerView: 4,
-              spaceBetween: 15, // Default space between slides for larger screens
+              spaceBetween: 15,
             },
           }}
           freeMode={true}
@@ -56,25 +47,24 @@ const HighlightedShoes = () => {
           modules={{ FreeMode, Pagination, Autoplay }}
           className="w-full lg:max-w-[80%] swiper-container"
           style={{
-            height:"auto"
+            height: "auto",
           }}
         >
-          {shoes.map((item, index) => (
+          {images.map((item, index) => (
             <SwiperSlide key={index}>
               <Link to={`/Shoes/${item.id.toString()}`}>
-              <div className="flex flex-col rounded-xl group relative px-6 py-8 shadow-lg h-[150px] w-[215px] lg:h-[300px] lg:w-auto overflow-hidden cursor-pointer">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `url(${item.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                />
-                <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
-              </div>
+                <div className="flex flex-col rounded-xl group relative px-6 py-8 shadow-lg h-[150px] w-[215px] lg:h-[300px] lg:w-auto overflow-hidden cursor-pointer">
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage: `url(${media}${item.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black opacity-10 group-hover:opacity-50" />
+                </div>
               </Link>
-              
             </SwiperSlide>
           ))}
         </Swiper>

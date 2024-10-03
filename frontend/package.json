@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.8",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
     "@react-google-maps/api": "^2.19.3",
@@ -18,16 +20,16 @@
     "@types/three": "^0.163.0",
     "axios": "^1.6.8",
     "chmod": "^0.2.1",
+    "graphql": "^16.9.0",
     "jwt-decode": "^4.0.0",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.23.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.1",
-    "three": "^0.163.0",
-    "vitest": "^2.0.5"
+    "three": "^0.163.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -40,6 +42,7 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
-    "vite": "^5.2.8"
+    "vite": "^5.2.8",
+    "vitest": "^2.0.5"
   }
 }

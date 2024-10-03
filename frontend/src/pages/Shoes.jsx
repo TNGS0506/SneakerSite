@@ -1,44 +1,42 @@
-import React, { useState, useEffect } from "react";
-import fetchData from "../components/api";
+import { useState, useEffect } from "react";
 import ShoeCard from "../components/ShoeCard";
 import "../styles/Shoes.css";
-import { GradientBackground } from "../constants/index.js";
+import { GET_ALLSHOES, GET_CATEGORIES } from "../../graphql/queries";
+import { useQuery } from "@apollo/client";
 
 const Shoes = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all"); // Set default to "all"
   const [shoes, setShoes] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const { data: data_shoes } = useQuery(GET_ALLSHOES);
+  const { data: data_categories } = useQuery(GET_CATEGORIES);
 
   useEffect(() => {
-    const getShoesData = async () => {
-      const data = await fetchData("allshoes");
-      if (data) {
-        setShoes(data);
-        console.table("shoes", data);
-      } else {
-        console.log("No data received");
-      }
-    };
+    if (data_shoes) {
+      console.log("shoes: ", data_shoes);
+      setShoes(data_shoes.allShoes);
+    }
+  }, [data_shoes]);
 
-    const getCategoriesData = async () => {
-      const data = await fetchData("categories");
-      if (data) {
-        setCategories([{ id: "all", name: "All Shoes" }, ...data]);
-        console.table("Categories", data);
-      }
-    };
-
-    getShoesData();
-    getCategoriesData();
-  }, []);
+  useEffect(() => {
+    if (data_categories) {
+      console.log("categories: ", data_categories);
+      setCategories([
+        { id: "all", name: "All Shoes" },
+        ...data_categories.allCategories,
+      ]);
+    }
+  }, [data_categories]);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
-  const filteredShoes = selectedCategory && selectedCategory !== "all"
-    ? shoes.filter((shoe) => shoe.category === selectedCategory)
-    : shoes;
+  const filteredShoes =
+    selectedCategory && selectedCategory !== "all"
+      ? shoes.filter((shoe) => shoe.category.id === selectedCategory)
+      : shoes;
 
   return (
     <div className="shoesPageContainer">
@@ -58,7 +56,8 @@ const Shoes = () => {
 
       <div className="UguulberContainer">
         <p>
-        When you see someone putting on his Big Boots, you can be pretty sure that an Adventure is going to happen.
+          When you see someone putting on his Big Boots, you can be pretty sure
+          that an Adventure is going to happen.
         </p>
       </div>
 
@@ -66,12 +65,12 @@ const Shoes = () => {
         <div className="CategoryContainer">
           <ul className="UlSda">
             {categories
-              .filter((category) => category.name !== "Highlights")
+              .filter((category) => category.name !== "Highlights") // Exclude any specific categories if needed
               .map((category, index) => (
                 <li
                   key={index}
                   className={`liElement font-bold text-xl ${
-                    selectedCategory === category.name ? "active" : ""
+                    selectedCategory === category.id ? "active" : ""
                   }`}
                   onClick={() => handleCategoryClick(category.id)}
                 >
